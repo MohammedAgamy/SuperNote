@@ -1,0 +1,2 @@
+rootProject.name = "SuperNote"
+include ':app'

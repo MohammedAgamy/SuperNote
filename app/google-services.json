@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "809106194653",
+    "project_id": "supernote-2c115",
+    "storage_bucket": "supernote-2c115.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809106194653:android:9c84dc17b24ad99207db34",
+        "android_client_info": {
+          "package_name": "com.example.supernote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809106194653-5dha2nueik6jg9eqpd2kq56a94gs53f2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs1-g96q0M7AAjmtKe6V7McVBMDG1MbZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809106194653-5dha2nueik6jg9eqpd2kq56a94gs53f2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
