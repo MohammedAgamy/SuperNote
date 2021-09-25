@@ -21,6 +21,8 @@ import com.example.supernote.R;
 import com.example.supernote.databinding.ActivityAddNoteBinding;
 import com.example.supernote.fragment.AddFragment;
 import com.example.supernote.fragment.AddImageFragment;
+import com.example.supernote.fragment.ToDoListFragment;
+import com.example.supernote.fragment.VoiceFragment;
 import com.example.supernote.pojo.LiveDataNote;
 import com.example.supernote.pojo.RoomDataBase.Entity;
 import com.google.android.material.snackbar.Snackbar;
@@ -28,7 +30,6 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class AddNoteActivity extends AppCompatActivity {
     ActivityAddNoteBinding binding;
-    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,14 @@ public class AddNoteActivity extends AppCompatActivity {
                         break;
                     case R.id.img:
                         fragment =new AddImageFragment();
+                        break;
+
+                    case R.id.Voice:
+                        fragment=new  VoiceFragment();
+                        break;
+
+                    case R.id.check:
+                        fragment=new ToDoListFragment() ;
                         break;
 
                 }

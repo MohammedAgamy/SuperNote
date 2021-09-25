@@ -31,6 +31,7 @@ import com.example.supernote.databinding.FragmentAddImageBinding;
 import com.example.supernote.pojo.ConvertImage;
 import com.example.supernote.pojo.LiveDataNote;
 import com.example.supernote.pojo.RoomDataBase.Entity;
+import com.example.supernote.ui.HomeActivity;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +72,7 @@ public class AddImageFragment extends Fragment implements View.OnClickListener {
     private void iniView(View view) {
         binding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_add_image);
 
-        //CARDView on click to tack image ;
+        //on click  ;
         binding.cardView.setOnClickListener(this);
         binding.save.setOnClickListener(this);
         binding.tackphot.setOnClickListener(this);
@@ -137,8 +138,6 @@ public class AddImageFragment extends Fragment implements View.OnClickListener {
         if (requestCode == RequestCodePhoto && resultCode == Activity.RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data");
             binding.imageViewNote.setImageBitmap(bitmap);
-
-
             //Picasso.get().load(String.valueOf(url)).into(binding.imageViewNote);
            // Glide.with(this).load(url).into(binding.imageViewNote);
             binding.cardView.setVisibility(View.INVISIBLE);
@@ -179,6 +178,15 @@ public class AddImageFragment extends Fragment implements View.OnClickListener {
             Log.e("getData" ,title);
             Log.e("getData" ,des);
             Log.e("getData" , String.valueOf(bitmap));
+
+
+
+           // startActivity(new Intent(getActivity() , HomeActivity.clsas));
+
+           // Intent intent =new Intent(getActivity()  , HomeActivity.class);
+           // startActivity(intent);
+
+
 
         }
 

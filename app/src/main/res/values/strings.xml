@@ -16,4 +16,5 @@
     <string name="logout">LogOut</string>
     <string name="add_a_description">Add a Description</string>
     <string name="add">Add</string>
+    <string name="press_the_button_to_start_recording">Press The Button To Start  Recording</string>
 </resources>

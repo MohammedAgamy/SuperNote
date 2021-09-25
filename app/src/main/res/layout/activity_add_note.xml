@@ -24,6 +24,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_home" />
+
+
         <com.ismaeldivita.chipnavigation.ChipNavigationBar
             android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
@@ -33,7 +35,6 @@
             android:elevation="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_30sdp"
             android:padding="3dp"
-
             app:cnb_menuResource="@menu/chap_nav"
             app:cnb_orientationMode="horizontal"
             android:background="@drawable/shape_btn"

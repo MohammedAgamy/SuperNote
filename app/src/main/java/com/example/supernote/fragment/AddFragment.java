@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayInputStream;
 
 public class AddFragment extends Fragment implements View.OnClickListener {
-
+    FragmentAddBinding binding;
     private static final String TAG = "TAGnOTE";
     ImageView mSaveDataBtn ;
     EditText mTitle ,mNote ;
@@ -62,13 +62,14 @@ public class AddFragment extends Fragment implements View.OnClickListener {
         imageView=view.findViewById(R.id.imageNote_item);
 
     }
+
     private void saveData() {
         String title = mTitle.getText().toString();
         String note = mNote.getText().toString();
         if (title.isEmpty() && note.isEmpty()) {
             Toast.makeText(getActivity(), "Enter Your Note", Toast.LENGTH_SHORT).show();
         } else {
-            Bitmap largeIcon = BitmapFactory.decodeResource(getResources(),R.drawable.fuk);
+            Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.fuk);
 
             LiveDataNote liveDataNote = ViewModelProviders.of(this).get(LiveDataNote.class);
             liveDataNote.insert(new Entity(title, note, ConvertImage.convertImage2ByteArray(largeIcon)));
