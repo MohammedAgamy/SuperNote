@@ -68,9 +68,6 @@ public class AdpterNote extends RecyclerView.Adapter<AdpterNote.item_note> {
             mNote = itemView.findViewById(R.id.tetNote);
             mImageView = itemView.findViewById(R.id.imageDelete);
             imageNote = itemView.findViewById(R.id.imageNote_item);
-
-
-
-        }
+ }
     }
 }

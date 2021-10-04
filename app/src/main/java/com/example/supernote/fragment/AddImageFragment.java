@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
@@ -22,12 +23,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.supernote.R;
-import com.example.supernote.databinding.FragmentAddImageBinding;
 import com.example.supernote.pojo.ConvertImage;
 import com.example.supernote.pojo.LiveDataNote;
 import com.example.supernote.pojo.RoomDataBase.Entity;
@@ -42,11 +44,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AddImageFragment extends Fragment implements View.OnClickListener {
-    FragmentAddImageBinding binding;
+
     final static int REQUEST_CODE = 23;
     final static int RequestCodePhoto = 1;
 
-    Bitmap bitmap ;
+    CardView mCardView;
+    EditText mTitle, mDecs;
+    Button mSavePhoto, mTrayAgain;
+    ImageView mShowImage;
+
+
+    Bitmap bitmap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,7 +64,7 @@ public class AddImageFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savediInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_image, container, false);
     }
@@ -70,12 +78,17 @@ public class AddImageFragment extends Fragment implements View.OnClickListener {
     }
 
     private void iniView(View view) {
-        binding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_add_image);
 
-        //on click  ;
-        binding.cardView.setOnClickListener(this);
-        binding.save.setOnClickListener(this);
-        binding.tackphot.setOnClickListener(this);
+
+        mCardView = view.findViewById(R.id.cardView);
+        mCardView.setOnClickListener(this);
+        mTitle = view.findViewById(R.id.title_edit);
+        mDecs = view.findViewById(R.id.dec_edit);
+        mSavePhoto = view.findViewById(R.id.save);
+        mSavePhoto.setOnClickListener(this);
+        mTrayAgain = view.findViewById(R.id.tackphot);
+        mTrayAgain.setOnClickListener(this);
+        mShowImage = view.findViewById(R.id.imageViewNote);
 
 
     }
@@ -96,7 +109,6 @@ public class AddImageFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
-
 
 
     public boolean getPermissionCamera() {
@@ -137,55 +149,48 @@ public class AddImageFragment extends Fragment implements View.OnClickListener {
 
         if (requestCode == RequestCodePhoto && resultCode == Activity.RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data");
-            binding.imageViewNote.setImageBitmap(bitmap);
+            mShowImage.setImageBitmap(bitmap);
             //Picasso.get().load(String.valueOf(url)).into(binding.imageViewNote);
-           // Glide.with(this).load(url).into(binding.imageViewNote);
-            binding.cardView.setVisibility(View.INVISIBLE);
-            binding.imageViewNote.setVisibility(View.VISIBLE);
-            binding.save.setVisibility(View.VISIBLE);
-            binding.tackphot.setVisibility(View.VISIBLE);
+            // Glide.with(this).load(url).into(binding.imageViewNote);
+            mCardView.setVisibility(View.INVISIBLE);
+            mShowImage.setVisibility(View.VISIBLE);
+            mSavePhoto.setVisibility(View.VISIBLE);
+            mTrayAgain.setVisibility(View.VISIBLE);
 
         }
 
     }
 
 
-    private void tackAthhorPhoto()
-    {
-        binding.cardView.setVisibility(View.VISIBLE);
-        binding.imageViewNote.setVisibility(View.INVISIBLE);
-        binding.save.setVisibility(View.INVISIBLE);
-        binding.tackphot.setVisibility(View.INVISIBLE);
+    private void tackAthhorPhoto() {
+        mCardView.setVisibility(View.VISIBLE);
+        mShowImage.setVisibility(View.INVISIBLE);
+        mSavePhoto.setVisibility(View.INVISIBLE);
+        mTrayAgain.setVisibility(View.INVISIBLE);
     }
 
 
-    private void savedImage()
-    {
+    private void savedImage() {
 
-        String title =binding.titleEdit.getText().toString();
-        String des =binding.decEdit.getText().toString() ;
-        if(title.isEmpty() && des.isEmpty())
-        {
+        String title = mTitle.getText().toString();
+        String des = mDecs.getText().toString();
+        if (title.isEmpty() && des.isEmpty()) {
             Toast.makeText(getActivity(), "Enter Your data", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+        } else {
 
-            LiveDataNote liveDataNote= ViewModelProviders.of(this).get(LiveDataNote.class);
-            liveDataNote.insert(new Entity(title ,des ,ConvertImage.convertImage2ByteArray(bitmap)));
+            LiveDataNote liveDataNote = ViewModelProviders.of(this).get(LiveDataNote.class);
+            liveDataNote.insert(new Entity(title, des, ConvertImage.convertImage2ByteArray(bitmap)));
 
             getActivity().finish();
-            Log.e("getData" ,title);
-            Log.e("getData" ,des);
-            Log.e("getData" , String.valueOf(bitmap));
+            Log.e("getData", title);
+            Log.e("getData", des);
+            Log.e("getData", String.valueOf(bitmap));
 
 
+            // startActivity(new Intent(getActivity() , HomeActivity.clsas));
 
-           // startActivity(new Intent(getActivity() , HomeActivity.clsas));
-
-           // Intent intent =new Intent(getActivity()  , HomeActivity.class);
-           // startActivity(intent);
-
+            // Intent intent =new Intent(getActivity()  , HomeActivity.class);
+            // startActivity(intent);
 
 
         }

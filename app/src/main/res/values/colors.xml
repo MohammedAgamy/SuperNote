@@ -12,4 +12,5 @@
     <color name="yellow_100">#8f94fb</color>
     <color name="grean">#ccc</color>
     <color name="white">#ffff</color>
+    <color name="gray">#777575</color>
 </resources>

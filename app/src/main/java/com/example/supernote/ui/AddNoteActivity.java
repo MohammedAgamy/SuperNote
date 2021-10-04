@@ -21,6 +21,7 @@ import com.example.supernote.R;
 import com.example.supernote.databinding.ActivityAddNoteBinding;
 import com.example.supernote.fragment.AddFragment;
 import com.example.supernote.fragment.AddImageFragment;
+import com.example.supernote.fragment.PlayListFragment;
 import com.example.supernote.fragment.ToDoListFragment;
 import com.example.supernote.fragment.VoiceFragment;
 import com.example.supernote.pojo.LiveDataNote;
@@ -45,11 +46,12 @@ public class AddNoteActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(int i) {
                 Fragment fragment = null;
-
                 switch (i) {
                     case R.id.add:
                         fragment = new AddFragment();
                         break;
+
+
                     case R.id.img:
                         fragment =new AddImageFragment();
                         break;
@@ -60,6 +62,10 @@ public class AddNoteActivity extends AppCompatActivity {
 
                     case R.id.check:
                         fragment=new ToDoListFragment() ;
+                        break;
+
+                    case R.id.imgMenu:
+                        fragment=new PlayListFragment();
                         break;
 
                 }

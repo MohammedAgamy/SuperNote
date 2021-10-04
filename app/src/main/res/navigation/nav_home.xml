@@ -25,30 +25,27 @@
             android:id="@+id/action_addImageFragment_to_voiceFragment"
             app:destination="@id/voiceFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/voiceFragment"
+        android:name="com.example.supernote.fragment.VoiceFragment"
+        android:label="VoiceFragment"
+        tools:layout="@layout/fragment_voice">
+        <action
+            android:id="@+id/action_voiceFragment_to_toDoListFragment"
+            app:destination="@id/toDoListFragment" />
+        <action
+            android:id="@+id/action_voiceFragment_to_playListFragment"
+            app:destination="@id/playListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/toDoListFragment"
         android:name="com.example.supernote.fragment.ToDoListFragment"
         android:label="fragment_to_do_list"
         tools:layout="@layout/fragment_to_do_list" />
     <fragment
-        android:id="@+id/voiceFragment"
-        android:name="com.example.supernote.fragment.VoiceFragment"
-        android:label="VoiceFragment"
-        tools:layout="@layout/fragment_voice">
-
-        <action
-            android:id="@+id/action_voiceFragment_to_playListFragment"
-            app:destination="@id/playListFragment"
-           />
-        <action
-            android:id="@+id/action_voiceFragment_to_toDoListFragment"
-            app:destination="@id/toDoListFragment"
-           />
-    </fragment>
-    <fragment
         android:id="@+id/playListFragment"
         android:name="com.example.supernote.fragment.PlayListFragment"
         android:label="fragment_play_list"
         tools:layout="@layout/fragment_play_list" />
+
 </navigation>
