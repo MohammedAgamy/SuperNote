@@ -139,4 +139,10 @@ public class VoiceFragment extends Fragment implements View.OnClickListener {
         mMediaRecorder.start();
     }
 
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        stopRecording();
+    }
 }
